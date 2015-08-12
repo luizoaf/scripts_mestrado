@@ -1,0 +1,28 @@
+     
+     "papeis_da_ibovespa_2008_a_2014_com_95_IBOVESPA.csv":
+     
+     1- Esses 95 representa a porcentagem de dias não nulos de uma ação,
+ 		logo, só foram aceitas as ações que passaram por esse critério. 
+     2- Foi feito um merge dos dias em comum dessa ações.
+
+	Características:
+   Ano qnt_dias
+1 2008      234
+2 2009      244
+3 2010      241
+4 2011      227
+5 2012      239
+6 2013      245
+7 2014      248
+> sum(qnt_dias_ano$qnt_dias)
+[1] 1678
+> sum(qnt_dias_ano$qnt_dias)/1827
+[1] 0.9184455
+> 
+     "acoes.csv":
+
+     1- foi extraído do site da BOVESPA com o objetivo de extrair todos os
+     códigos das ações
+
+OBS: Não estou utilizando acoes_atualizado.csv, estou com as informações de 2014
+

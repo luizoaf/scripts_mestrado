@@ -1,0 +1,9 @@
+"cria_serie_temporal_dos_setores.R"
+     1- Acessa a base de dados extraida da pasta Acoes e agrupa os setores com as médias das ações que compõem cada setor, gerando "series_temporais_setores.csv", para isso é preciso acessar "setores.csv" pois lá possui as ações que compõem cada setor.
+
+
+### Se fosse pelos dados da bovespa ###
+ Para extrair as cotações das ações da bovespa basta acessar esse site
+ http://www.bmfbovespa.com.br/shared/iframe.aspx?idioma=pt-br&url=http://www.bmfbovespa.com.br/pt-br/cotacoes-historicas/FormSeriesHistoricas.asp
+
+#######################################

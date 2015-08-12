@@ -1,0 +1,1 @@
+Tudo que foi utilizado para a extração e pré-processamento dos dados das ações da BOVESPA

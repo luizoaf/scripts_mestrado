@@ -1,0 +1,1 @@
+As imagens geradas possuem na legenda o valor de SSE calculado sem transformação(log), elas são geradas no script "janelamento_sem_series_temporais_setores.R"

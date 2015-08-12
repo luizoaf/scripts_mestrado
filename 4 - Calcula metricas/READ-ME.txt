@@ -1,0 +1,1 @@
+"previsao_exponencial.R" é utilizado na pasta de janelamento com o objetivo de calcular as métricas de cada série temporal.

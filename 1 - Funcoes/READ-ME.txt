@@ -1,0 +1,2 @@
+"funcoes.R"
+ Script com todas as funções utilizadas

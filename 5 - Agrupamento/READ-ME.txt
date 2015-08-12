@@ -1,0 +1,4 @@
+"agrupamento_kmeans_b_volatilidade.R" 
+Agrupa utilizando os dados de janelamento sem as séries temporais, com k =3 e leva em consideração o coeficiente b e a volatilidade para agrupar.
+
+Gera uma tabela com o tipo de risco em "agrupamento_distancias_b_e_volatilidade.csv" e os centróides que determinam o tipo de risco em "centroides_b_e_volatilidade.R", então pela distância euclidiana pode-se determinar o risco do setor

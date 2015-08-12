@@ -1,0 +1,8 @@
+"janelamento_sem_series_temporais_setores"
+ faz o janelamento de 20 em 20 dias, pulando 240 dias, calculando as métricas de cada setor, exibe apenas as métricas.
+
+ "janelamento_com_series_temporais_setores"
+ faz o janelamento de 20 em 20 dias, pulando 240 dias, calculando as métricas de cada setor, exibe as métricas e as séries temporais.
+
+ "beta.R"
+ Calcula o risco Beta através dos janelamentos utilizados acima
