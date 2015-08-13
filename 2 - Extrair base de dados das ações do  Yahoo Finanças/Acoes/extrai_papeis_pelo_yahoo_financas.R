@@ -1,6 +1,7 @@
-setwd("C:/Users/V1d4 L0k4/Desktop/Tabelas dos experimentos/2 - Extrair base de dados das ações do  Yahoo Finanças/Acoes")
+setwd("C:/Users/V1d4 L0k4/Dropbox/IJCNN 2015/scripts_mestrado/2 - Extrair base de dados das ações do  Yahoo Finanças/Acoes")
+# setwd("C:/Users/V1d4 L0k4/Desktop/Tabelas dos experimentos/2 - Extrair base de dados das ações do  Yahoo Finanças/Acoes")
 source("../../1 - Funcoes/funcoes.R")
-setwd("C:/Users/V1d4 L0k4/Desktop/Tabelas dos experimentos/2 - Extrair base de dados das ações do  Yahoo Finanças/Acoes")
+setwd("C:/Users/V1d4 L0k4/Dropbox/IJCNN 2015/scripts_mestrado/2 - Extrair base de dados das ações do  Yahoo Finanças/Acoes")
 
 acoes = paste(as.character(read.csv("acoes.csv",sep=";")[,1])[1:69],".SA",sep="")
 # acoes_que_compoe_bovespa =  as.character(read.csv("acoes_atualizado.csv",sep=";")[1:68,1])

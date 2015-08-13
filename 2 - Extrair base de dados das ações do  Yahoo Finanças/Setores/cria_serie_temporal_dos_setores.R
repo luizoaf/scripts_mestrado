@@ -1,6 +1,6 @@
-setwd("C:/Users/V1d4 L0k4/Desktop/Tabelas dos experimentos/2 - Extrair base de dados das ações do  Yahoo Finanças/Setores")
+setwd("C:/Users/V1d4 L0k4/Dropbox/IJCNN 2015/scripts_mestrado/2 - Extrair base de dados das ações do  Yahoo Finanças/Setores")
 source("../../1 - Funcoes/funcoes.R")
-setwd("C:/Users/V1d4 L0k4/Desktop/Tabelas dos experimentos/2 - Extrair base de dados das ações do  Yahoo Finanças/Setores")
+setwd("C:/Users/V1d4 L0k4/Dropbox/IJCNN 2015/scripts_mestrado/2 - Extrair base de dados das ações do  Yahoo Finanças/Setores")
 
 dados = read.csv(file="../Acoes/papeis_da_ibovespa_2008_a_2014_com_95_IBOVESPA.csv")
 dados = inverte_indices_data_frame(dados)

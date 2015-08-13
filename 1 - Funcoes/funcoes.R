@@ -1,4 +1,6 @@
-setwd("C:/Users/V1d4 L0k4/Desktop/Tabelas dos experimentos/1 - Funcoes")
+# setwd("C:/Users/V1d4 L0k4/Desktop/Tabelas dos experimentos/1 - Funcoes")
+setwd("C:/Users/V1d4 L0k4/Dropbox/IJCNN 2015/scripts_mestrado/1 - Funcoes")
+
 if(require(minpack.lm) == FALSE){
   install.packages("minpack.lm")
 }
