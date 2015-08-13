@@ -102,7 +102,7 @@ lags_b_volatilidade$alvo = janelamento_b$alvo
 
 
 
-dados_treino = lags_b_volatilidade
+dados = lags_b_volatilidade
 
 # 
 # porcentagem.teste = c(.25,.3)
@@ -122,22 +122,49 @@ porc_teste = porcentagem.teste[1]
 iteracao = iteracoes[1]
 neuronio = neuronios.na.camada.escondida[1]
 
-dados_treino$id = 1:nrow(dados_treino)
-dados_treino= dados_treino[sample(1:nrow(dados_treino) ,length(1:nrow(dados_treino))), 1:ncol(dados_treino)]
-indices = dados_treino$id
-dados_treino = dados_treino[,1:(ncol(dados_treino)-1)]
-enValues= dados_treino[,1:(ncol(dados_treino)-1)]
-enTargets = dados_treino[,ncol(dados_treino)]
-patterns_b_v = splitForTrainingAndTest(enValues, enTargets,ratio=porc_teste)
-model_b_v = mlp(patterns_b_v$inputsTrain, patterns_b_v$targetsTrain, size = neuronio, 
-            learnFuncParams = learnParams, maxit = iteracao, inputsTest = patterns_b_v$inputsTest, 
-            targetsTest = patterns_b_v$targetsTest) 
+# dados_treino$id = 1:nrow(dados_treino)
+# dados_treino= dados_treino[sample(1:nrow(dados_treino) ,length(1:nrow(dados_treino))), 1:ncol(dados_treino)]
+# indices = dados_treino$id
+# dados_treino = dados_treino[,1:(ncol(dados_treino)-1)]
+# enValues= dados_treino[,1:(ncol(dados_treino)-1)]
+# enTargets = dados_treino[,ncol(dados_treino)]
+
+dados_entrada = function(dados){
+  return(dados[,1:(ncol(dados)-1)])
+}
+
+dados_alvo = function(dados){
+  return(dados[,ncol(dados)])
+}
+
+# Dividindo 50% de treino, 25% de validação e 25% de teste
+cinquenta_porcento = .5 * nrow(dados) 
+setenta_e_quinco_porcento = .75 * nrow(dados)
+
+indice_treino = 1:cinquenta_porcento
+indice_validacao = (cinquenta_porcento + 1):setenta_e_quinco_porcento
+indice_teste = (setenta_e_quinco_porcento + 1):nrow(dados)
+
+dados_treinamento = dados[indice_treino,]
+dados_validacao = dados[indice_validacao,]
+dados_teste = dados[indice_teste,]
+
+entrada_treinamento = dados_entrada(dados_treinamento)
+alvo_treinamento = dados_alvo(dados_treinamento)
+
+entrada_teste = dados_entrada(dados_teste)
+alvo_teste = dados_alvo(dados_teste)
+
+# patterns_b_v = splitForTrainingAndTest(enValues, enTargets,ratio=porc_teste)
+model_b_v = mlp(entrada_treinamento, alvo_treinamento, size = neuronio, 
+            learnFuncParams = learnParams, maxit = iteracao, inputsTest = entrada_teste, 
+            targetsTest = alvo_teste) 
 
 # predicao_treino <-  as.vector(model_b_v$fitted.values)
 # targets_treino = patterns_b_v$targetsTrain
 
 predicao_teste_b_v <- as.vector( model_b_v$fittedTestValues)
-targets_teste = patterns_b_v$targetsTest
+targets_teste = alvo_teste
 
 
 # par(mfrow=c(3,2))

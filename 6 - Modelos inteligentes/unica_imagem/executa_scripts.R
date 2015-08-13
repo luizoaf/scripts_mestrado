@@ -36,13 +36,13 @@ nome_series_temporais = c("BSP","Bens industriais e\nmaterial de transporte",
                           "Construção e transporte,\nconstrução e engenharia",
                           "Utilidade pública, \nágua e saneamento")
 i=4
-# for(i in 1:length(todos_setores)){
+for(i in 1:length(todos_setores)){
   setor = todos_setores[i]
-#   png(paste("previsoes/",setor,".png",sep=""),bg = "transparent",height = 450,width = 1050)
+  png(paste("previsoes/",setor,"_sem_embaralhar.png",sep=""),bg = "transparent",height = 450,width = 1050)
   serie_temporal_setor = setor_b_volatilidade(setor)
   source("acf_b_volatilidade.R")
   source("acf_volatilidade.R")
   source("acf_b.R")
   legend("topright",title="Variáveis de entrada" ,inset=.05, c("Alvo(volatilidade)","B e vol.","Vol.","B"), lwd= 3,col = c("black","red","blue","green"), horiz=TRUE)
-#   dev.off()
-# }
+  dev.off()
+}
