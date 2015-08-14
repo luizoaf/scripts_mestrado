@@ -47,7 +47,8 @@ for(neuronio in neuronios.na.camada.escondida){
         for( i_rede_neural in 1:30){
           for(i in 1:length(todos_setores)){
             setor = todos_setores[i]
-            png(paste("previsoes/",setor,"_sem_embaralhar_neuronio_",neuronio,"_v_",i_rede_neural,".png",sep=""),bg = "transparent",height = 450,width = 1050)
+            #             png(paste("previsoes/",setor,"_sem_embaralhar_neuronio_",neuronio,"_v_",i_rede_neural,".png",sep=""),bg = "transparent",height = 450,width = 1050)
+            png(paste("previsoes/",setor,"_embaralha_neuronio_",neuronio,"_v_",i_rede_neural,".png",sep=""),bg = "transparent",height = 450,width = 1050)
             serie_temporal_setor = setor_b_volatilidade(setor)
             source("acf_b_volatilidade.R")
             metricas = rbind(metricas,informacoes)
@@ -57,7 +58,8 @@ for(neuronio in neuronios.na.camada.escondida){
             metricas = rbind(metricas,informacoes)
             legend("topright",title="Variáveis de entrada" ,inset=.05, c("Alvo(volatilidade)","B e vol.","Vol.","B"), lwd= 3,col = c("black","red","blue","green"), horiz=TRUE)
             dev.off()
-            write.table(metricas,paste("tabelao_com_metricas_sem_embaralhar_dados_neuronio_",neuronio ,"_v_",i_rede_neural,".csv",sep=""),sep=";",dec =",",row.names=F)
+            #             write.table(metricas,paste("tabelao_com_metricas_sem_embaralhar_dados_neuronio_",neuronio ,"_v_",i_rede_neural,".csv",sep=""),sep=";",dec =",",row.names=F)
+            write.table(metricas,paste("tabelao_com_metricas_embaralha_dados_neuronio_",neuronio ,"_v_",i_rede_neural,".csv",sep=""),sep=";",dec =",",row.names=F)
           }
         }
         indice = indice+1
@@ -81,4 +83,5 @@ for(neuronio in neuronios.na.camada.escondida){
 #   legend("topright",title="Variáveis de entrada" ,inset=.05, c("Alvo(volatilidade)","B e vol.","Vol.","B"), lwd= 3,col = c("black","red","blue","green"), horiz=TRUE)
 #   dev.off()
 # }
-write.table(metricas,"tabelao_com_metricas_sem_embaralhar_dados.csv",sep=";",dec =",",row.names=F)
+# write.table(metricas,"tabelao_com_metricas_sem_embaralhar_dados.csv",sep=";",dec =",",row.names=F)
+write.table(metricas,"tabelao_com_metricas_embaralha_dados.csv",sep=";",dec =",",row.names=F)

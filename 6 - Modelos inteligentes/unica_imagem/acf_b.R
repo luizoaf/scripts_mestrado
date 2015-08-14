@@ -1,6 +1,7 @@
 dados = janelamento_b
 
 dados_treinamento = dados[indice_treino,]
+dados_treinamento= dados_treinamento[sample(1:nrow(dados_treinamento) ,length(1:nrow(dados_treinamento))), 1:ncol(dados_treinamento)]
 dados_validacao = dados[indice_validacao,]
 dados_teste = dados[indice_teste,]
 

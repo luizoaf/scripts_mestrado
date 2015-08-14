@@ -1,6 +1,7 @@
 dados = janelamento_volatilidade
 
 dados_treinamento = dados[indice_treino,]
+dados_treinamento= dados_treinamento[sample(1:nrow(dados_treinamento) ,length(1:nrow(dados_treinamento))), 1:ncol(dados_treinamento)]
 dados_validacao = dados[indice_validacao,]
 dados_teste = dados[indice_teste,]
 
@@ -15,8 +16,8 @@ alvo_teste = dados_alvo(dados_teste)
 
 
 model_v = mlp(entrada_treinamento, alvo_treinamento, size = neuronio, 
-                learnFuncParams = learnParams, maxit = iteracao, inputsTest = entrada_teste, 
-                targetsTest = alvo_teste) 
+              learnFuncParams = learnParams, maxit = iteracao, inputsTest = entrada_teste, 
+              targetsTest = alvo_teste) 
 
 predicao_treino <-  as.vector(predict(model_v,entrada_treinamento))
 predicao_validacao <- as.vector(predict(model_v,entrada_validacao))
