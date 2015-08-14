@@ -20,7 +20,7 @@ require("ggplot2")
 
 porcentagem.teste = c(.25)
 iteracoes = c(2200)
-neuronios.na.camada.escondida =  c(5)
+neuronios.na.camada.escondida =  c(3,5,10,15,20)
 learnFuncParams = c(.3)
 # i=1
 coluna_setores = as.character(rep(todos_setores,each = 90))
@@ -35,14 +35,50 @@ nome_series_temporais = c("BSP","Bens industriais e\nmaterial de transporte",
                           "Consumo não cíclico e\nprodutos de uso pessoal e de limpeza",
                           "Construção e transporte,\nconstrução e engenharia",
                           "Utilidade pública, \nágua e saneamento")
-i=4
-for(i in 1:length(todos_setores)){
-  setor = todos_setores[i]
-  png(paste("previsoes/",setor,"_sem_embaralhar.png",sep=""),bg = "transparent",height = 450,width = 1050)
-  serie_temporal_setor = setor_b_volatilidade(setor)
-  source("acf_b_volatilidade.R")
-  source("acf_volatilidade.R")
-  source("acf_b.R")
-  legend("topright",title="Variáveis de entrada" ,inset=.05, c("Alvo(volatilidade)","B e vol.","Vol.","B"), lwd= 3,col = c("black","red","blue","green"), horiz=TRUE)
-  dev.off()
+# i=4
+
+metricas = data.frame()
+indice = 1
+resultados = data.frame()
+for(neuronio in neuronios.na.camada.escondida){
+  for(iteracao in iteracoes){
+    for(learnParams in learnFuncParams){
+      for(porc_teste in porcentagem.teste){
+        for( i_rede_neural in 1:30){
+          for(i in 1:length(todos_setores)){
+            setor = todos_setores[i]
+            png(paste("previsoes/",setor,"_sem_embaralhar_neuronio_",neuronio,"_v_",i_rede_neural,".png",sep=""),bg = "transparent",height = 450,width = 1050)
+            serie_temporal_setor = setor_b_volatilidade(setor)
+            source("acf_b_volatilidade.R")
+            metricas = rbind(metricas,informacoes)
+            source("acf_volatilidade.R")
+            metricas = rbind(metricas,informacoes)
+            source("acf_b.R")
+            metricas = rbind(metricas,informacoes)
+            legend("topright",title="Variáveis de entrada" ,inset=.05, c("Alvo(volatilidade)","B e vol.","Vol.","B"), lwd= 3,col = c("black","red","blue","green"), horiz=TRUE)
+            dev.off()
+            write.table(metricas,paste("tabelao_com_metricas_sem_embaralhar_dados_neuronio_",neuronio ,"_v_",i_rede_neural,".csv",sep=""),sep=";",dec =",",row.names=F)
+          }
+        }
+        indice = indice+1
+      }
+    }
+  }
 }
+
+# 
+# metricas = data.frame()
+# for(i in 1:length(todos_setores)){
+#   setor = todos_setores[i]
+#   png(paste("previsoes/",setor,"_sem_embaralhar.png",sep=""),bg = "transparent",height = 450,width = 1050)
+#   serie_temporal_setor = setor_b_volatilidade(setor)
+#   source("acf_b_volatilidade.R")
+#   metricas = rbind(metricas,informacoes)
+#   source("acf_volatilidade.R")
+#   metricas = rbind(metricas,informacoes)
+#   source("acf_b.R")
+#   metricas = rbind(metricas,informacoes)
+#   legend("topright",title="Variáveis de entrada" ,inset=.05, c("Alvo(volatilidade)","B e vol.","Vol.","B"), lwd= 3,col = c("black","red","blue","green"), horiz=TRUE)
+#   dev.off()
+# }
+write.table(metricas,"tabelao_com_metricas_sem_embaralhar_dados.csv",sep=";",dec =",",row.names=F)
