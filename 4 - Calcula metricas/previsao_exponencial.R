@@ -1,4 +1,4 @@
-setwd("C:/Users/V1d4 L0k4/Desktop/Tabelas dos experimentos/4 - Calcula metricas")
+setwd("C:/Users/V1d4 L0k4/Dropbox/IJCNN 2015/scripts_mestrado/4 - Calcula metricas")
 eixo_x_frequencias = funcao_distribuicao_probabilidade(serie)$valor_serie_retorno_eixo_x
 alvo = funcao_distribuicao_probabilidade(serie)$frequencia_eixo_y
 

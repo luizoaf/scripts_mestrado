@@ -36,7 +36,11 @@ nome_series_temporais = c("BSP","Bens industriais e\nmaterial de transporte",
                           "Construção e transporte,\nconstrução e engenharia",
                           "Utilidade pública, \nágua e saneamento")
 # i=4
-
+# i_rede_neural= 1
+# learnParams = learnFuncParams[1]
+# porc_teste = porcentagem.teste[1]
+# iteracao = iteracoes[1]
+# neuronio = neuronios.na.camada.escondida[1]
 metricas = data.frame()
 indice = 1
 resultados = data.frame()

@@ -117,10 +117,6 @@ dados = lags_b_volatilidade
 
 # model_b_vo = mlp
 # 
-# learnParams = learnFuncParams[1]
-# porc_teste = porcentagem.teste[1]
-# iteracao = iteracoes[1]
-# neuronio = neuronios.na.camada.escondida[1]
 
 # dados_treino$id = 1:nrow(dados_treino)
 # dados_treino= dados_treino[sample(1:nrow(dados_treino) ,length(1:nrow(dados_treino))), 1:ncol(dados_treino)]
@@ -145,10 +141,19 @@ indice_treino = 1:cinquenta_porcento
 indice_validacao = (cinquenta_porcento + 1):setenta_e_quinco_porcento
 indice_teste = (setenta_e_quinco_porcento + 1):nrow(dados)
 
+dados$id = 1:nrow(dados)
+dados = dados[sample(1:nrow(dados) ,length(1:nrow(dados))), 1:ncol(dados)]
 dados_treinamento = dados[indice_treino,]
-dados_treinamento= dados_treinamento[sample(1:nrow(dados_treinamento) ,length(1:nrow(dados_treinamento))), 1:ncol(dados_treinamento)]
 dados_validacao = dados[indice_validacao,]
 dados_teste = dados[indice_teste,]
+
+indice_treino = dados_treinamento$id
+indice_validacao = dados_validacao$id
+indice_teste = dados_teste$id
+
+dados_treinamento = dados_treinamento[,1:(ncol(dados_treinamento)-1)]
+dados_validacao = dados_validacao[,1:(ncol(dados_validacao)-1)]
+dados_teste = dados_teste[,1:(ncol(dados_teste)-1)]
 
 
 ################## TREINO, VALIDACAO e TESTE
@@ -178,7 +183,8 @@ predicao_teste <- as.vector(predict(model_b_v,entrada_teste))
 # lines(predicao_teste,col="black",lwd=3,lty=3)
 
 if(i == 4){
-plot(main=nome_series_temporais[i],alvo_teste,type="o",lwd=2,pch=16,xlab="Meses",ylab="Volatilidade",col=1,ylim=c(0.4,.8))
+plot(main=nome_series_temporais[i],alvo_teste,type="o",lwd=2,pch=16,xlab="Meses",ylab="Volatilidade",col=1)
+# ylim=c(0.4,.8)
   
 }else{
   plot(main=nome_series_temporais[i],alvo_teste,type="o",lwd=2,pch=16,xlab="Meses",ylab="Volatilidade",col=1,ylim=c(0.5,1.5))

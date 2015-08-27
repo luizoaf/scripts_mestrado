@@ -1,6 +1,6 @@
-setwd("C:/Users/V1d4 L0k4/Desktop/Tabelas dos experimentos/6 - Modelos inteligentes")
+setwd("C:/Users/V1d4 L0k4/Dropbox/IJCNN 2015/scripts_mestrado/6 - Modelos inteligentes")
 # setores = read.csv("C:/Users/V1d4 L0k4/Desktop/Tabelas dos experimentos/2 - Extrair base de dados das ações do  Yahoo Finanças/Setores/series_temporais_setores.csv")
-setores = read.csv("C:/Users/V1d4 L0k4/Desktop/Tabelas dos experimentos/3 - Janelamento/Setor/metricas_setores_sem_series_temporais.csv")
+setores = read.csv("C:/Users/V1d4 L0k4/Dropbox/IJCNN 2015/scripts_mestrado/3 - Janelamento/Setor/metricas_setores_sem_series_temporais.csv")
 
 
 

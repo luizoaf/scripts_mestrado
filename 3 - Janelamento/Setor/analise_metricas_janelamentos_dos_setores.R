@@ -1,10 +1,10 @@
-diretorio_atual = "C:/Users/V1d4 L0k4/Desktop/Tabelas dos experimentos/3 - Janelamento/Setor"
+diretorio_atual = "C:/Users/V1d4 L0k4/Dropbox/IJCNN 2015/scripts_mestrado/3 - Janelamento/Setor"
 setwd(diretorio_atual)
 source("../../1 - Funcoes/funcoes.R")
 setwd(diretorio_atual)
 
 
-dados = read.csv("metricas_setores.csv")
+dados = read.csv("metricas_setores_sem_series_temporais.csv")
 setores = unique(dados$setor)
 
 
